@@ -71,25 +71,25 @@
 
 
         <p>
-            <ul>
-                <li v-for="(user, key, index) in users">
-                    @{{ index + 1 }} : @{{ key }} : @{{ user }}
-                </li>
-            </ul>
+        <ul>
+            <li v-for="(user, key, index) in users">
+                @{{ index + 1 }} : @{{ key }} : @{{ user }}
+            </li>
+        </ul>
         </p>
 
         <p>
-            <ul>
-                <li v-for="n in 10">
-                    @{{ n }}
-                </li>
-            </ul>
+        <ul>
+            <li v-for="n in 10">
+                @{{ n }}
+            </li>
+        </ul>
         </p>
 
         <h4 v-once>
             Old Name : @{{ name }}
         </h4>
-        <h4> 
+        <h4>
             Updated Name : @{{ name }}
             @{{ updateName() }}
         </h4>
@@ -101,9 +101,73 @@
 
         <button v-on:click="updateUser">Update Name </button>
 
-        <div class="box" style="width: 400; height: 200; background-color: ">
-            hover me 
+        <div class="box" style="width: 400; height: 200; background-color: aqua" v-on:mousemove="getCord">
+            hover me
         </div>
+
+        <p>
+            X : @{{ x }}
+            Y : @{{ y }}
+        </p>
+
+
+        <p>
+            @{{ name }}
+        </p>
+
+        <button v-on:click.right="updateWithGivenName('testName')">
+            click
+        </button>
+
+        <hr>
+
+        {{-- make an invoice --}}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Mobile Phone
+                    </td>
+                    <td>
+                        <input type="text" name="unitPrice">
+                    </td>
+                    <td>
+                        <input type="text" name="quantity">
+                    </td>
+                    <td>
+                        <input type="text" name="totalPrice" readonly>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="float-right">
+                        Grand Total
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <hr>
+
+        <form action="" method="get" v-on:submit="handleForm($event)">
+            <input type="text" name="firstName">
+            <input type="text" name="lastName">
+            <button type="submit">Save</button>
+        </form>
+
     </div>
 </body>
 <script>
@@ -122,6 +186,7 @@
                     }
                 }
             ],
+            imgSrc__: '',
             imgSrc: 'https://fastly.picsum.photos/id/832/200/300.jpg?hmac=6gMt7WeRsS41_901ujRTrOgfwtW9MBZ375g8qXO3LUc',
             imgAlt: 'Image',
             websiteLink: 'http://google.com',
@@ -135,11 +200,17 @@
                 'Ford'
             ],
             users: {
-                name : 'Raz',
-                age : 20,
+                name: 'Raz',
+                age: 20,
                 country: 'BD'
             },
-            name: "Razu"
+            name: "Razu",
+            x: 0,
+            y: 0,
+            formData: {
+                firstName: '',
+                lastName: ''
+            }
         },
         methods: {
             testFunction: function() {
@@ -151,15 +222,27 @@
             changeUser: function() {
                 return this.userName == "Raz" ?? false
             },
-            updateName: function(){
+            updateName: function() {
                 setTimeout(() => {
                     this.name = "Raza"
                 }, 2000);
             },
-            updateUser: function(){
+            updateUser: function() {
                 this.name = "Mina"
-            }   
-        },
+            },
+            getCord: function(event) {
+                this.x = event.clientX,
+                    this.y = event.clientY
+            },
+            updateWithGivenName: function(newName) {
+                this.name = newName;
+                // console.log(event.eventType);
+            },
+            handleForm: function(event) {
+                event.preventDefault();
+                console.log('form submitted');
+            }
+        }
 
     });
 </script>

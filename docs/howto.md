@@ -57,6 +57,15 @@ vue js
         - [ ] events
           - [ ] v-on:click is used to fire on click event 
             - [ ] click is the most common 
+          - [ ] v-on:mousemove is used to fire on mouse over
+            - [ ] example: event.clientX 
+          - [ ] method with argument
+          - [ ] modifier
+            - [ ] v-on:click.right, (left, right, once)
+          - [ ] event.preventDefault
+            - [ ] <form v-on:submit="handleForm"></form>
+        - [ ] model
+          - [ ] 
       - [ ] custom
     - [ ] 
 
