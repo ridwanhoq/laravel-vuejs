@@ -170,27 +170,120 @@
                 <button type="submit">Save</button>
             </form>
 
-            
+
+            <button v-on:click="a++">
+                Button A
+            </button>
+            <p>A= @{{ a }}</p>
+            <p>B= @{{ b }}</p>
+            <button v-on:click="b++">
+                Button B
+            </button>
+            <p>Salary + A = @{{ addToA }} </p>
+            <p>Salary + B = @{{ addToB }} </p>
 
         </div>
 
 
         <hr>
 
-        
-        <button v-on:click="a++">
-            Button A 
-        </button>
-        <p>A= @{{ a }}</p>
-        <p>B= @{{ b }}</p>
-        <button v-on:click="b++">
-            Button B 
-        </button>
-        <p>Salary + A = {{ addToA }} </p>
-        <p>Salary + B = {{ addToB }} </p>
+
 
     </div>
+
+
+    <div style="display: none">
+        <div id="app1">
+            <p>
+                This is the @{{ value }} instance
+            </p>
+
+            <button @click="changeValue()">
+                click me
+            </button>
+        </div>
+
+        <hr>
+
+        <div id="app2">
+            <p>
+                This is @{{ value }} instance
+            </p>
+        </div>
+
+
+    </div>
+
+    <div id="app3">
+
+    </div>
+
+    <div id="app4">
+
+    </div>
+
+
+
 </body>
+
+
+<script>
+    const template = `
+<div>
+    Test title
+    </div>
+`;
+    const app3 = new Vue({
+        el: '#app3',
+        data: {
+            value: 'first'
+        },
+        template: {
+            template
+        }
+    });
+
+    const app4 = new Vue({
+        el: '#app4',
+        data: {
+            value: 'second'
+        }
+    });
+
+
+    setTimeout(() => {
+        app3.$mount('#app3');
+    }, 2000);
+</script>
+
+
+
+<script>
+    const app1 = new Vue({
+        el: '#app1',
+        data: {
+            value: "first"
+        },
+        methods: {
+            changeValue() {
+                app2.value = 'changed'
+            }
+        }
+    });
+
+
+    const app2 = new Vue({
+        el: '#app2',
+        data: {
+            value: "second"
+        },
+        methods: {
+
+        }
+    });
+</script>
+
+
 <script>
     new Vue({
         el: '#app',
@@ -233,7 +326,8 @@
                 lastName: ''
             },
             a: 0,
-            b: 0
+            b: 0,
+            salary: 10
         },
         methods: {
             testFunction: function() {
@@ -264,6 +358,16 @@
             handleForm: function(event) {
                 console.log(this.formData);
                 event.preventDefault();
+            }
+        },
+        computed: {
+            addToA() {
+                console.log("Add a");
+                return this.a + this.salary;
+            },
+            addToB() {
+                console.log("Add b");
+                return this.b = this.salary;
             }
         }
 

@@ -68,7 +68,24 @@ vue js
           - [ ] two way binding
             - [ ]  v-model="formData.firstName" 
     - [ ] computed property
-      - [ ]  
+      - [ ] when clicking on a button, then all methods are rendered, to avoid this need to use computed property
+        - [ ] never use parentheses while calling methods defined in computed property
+        - [ ] when need to change, update or calculate then use computed property
+          - [ ] computed: { addToA(){} }
+    - [ ] short hands
+      - [ ] shortcut for event
+        - [ ] v-on:click changed to @click
+        - [ ] v-on:change changed to @change
+      - [ ] shortcut for binding html attribute
+        - [ ] v-bind changed to :
+      - [ ] no shorthand for v-model
+    - [ ] multiple instances
+      - [ ] pass from one instance to another
+      - [ ] on click change
+    - [ ] mounted property
+      - [ ] to change the value after a certain time 
+    - [ ] template property
+      - [ ] 
     - [ ] custom
     - [ ] 
 
