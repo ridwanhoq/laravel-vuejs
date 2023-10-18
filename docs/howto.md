@@ -28,7 +28,7 @@ vue js
   - [ ] el 
     - [ ] select the element define with . or # for class or id
   - [ ] data 
-  - [ ] methods
+  - [ ] methods property
     - [ ] this keyword
     - [ ] directives
       - [ ] built in 
@@ -64,9 +64,12 @@ vue js
             - [ ] v-on:click.right, (left, right, once)
           - [ ] event.preventDefault
             - [ ] <form v-on:submit="handleForm"></form>
-        - [ ] model
-          - [ ] 
-      - [ ] custom
+        - [ ] v-model
+          - [ ] two way binding
+            - [ ]  v-model="formData.firstName" 
+    - [ ] computed property
+      - [ ]  
+    - [ ] custom
     - [ ] 
 
 

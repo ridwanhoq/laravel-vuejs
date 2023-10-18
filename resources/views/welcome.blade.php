@@ -11,162 +11,183 @@
 
 <body>
     <div id="app">
-        <p>
-            @{{ title }}
-        </p>
-        <p>
-            @{{ testFunction() }}
-        </p>
-        <p>
-            @{{ testFunction2() }}
-        </p>
-        <img v-bind:src="imgSrc__" v-bind:alt="imgAlt" width="200" height="200">
-        <a v-bind:href="websiteLink">Google</a>
-        <hr>
-        <hr>
-        <p v-text="myText">
-        </p>
 
-        <p v-html="myHtml">
-        </p>
+        <div style="display: none">
+            <p>
+                @{{ title }}
+            </p>
+            <p>
+                @{{ testFunction() }}
+            </p>
+            <p>
+                @{{ testFunction2() }}
+            </p>
+            <img v-bind:src="imgSrc__" v-bind:alt="imgAlt" width="200" height="200">
+            <a v-bind:href="websiteLink">Google</a>
+            <hr>
+            <hr>
+            <p v-text="myText">
+            </p>
 
-        <p v-if="userAge >= 30">
-            You are good to go
-        </p>
-        <p v-else="">
-            You are not good to go
-        </p>
+            <p v-html="myHtml">
+            </p>
 
-        <p v-if="userAge <= 10">
-            less than or equal 10
-        </p>
-        <p v-else-if="userAge > 10 && userAge <= 18">
-            less than or equal 18, but greater than 10
-        </p>
-        <p v-else="">
-            greater than 18
-        </p>
+            <p v-if="userAge >= 30">
+                You are good to go
+            </p>
+            <p v-else="">
+                You are not good to go
+            </p>
 
-        @{{ changeUser() }}
+            <p v-if="userAge <= 10">
+                less than or equal 10
+            </p>
+            <p v-else-if="userAge > 10 && userAge <= 18">
+                less than or equal 18, but greater than 10
+            </p>
+            <p v-else="">
+                greater than 18
+            </p>
 
-        <p v-if="changeUser">
-            userName is Raz
-        </p>
+            @{{ changeUser() }}
 
-        <p v-show="userName == 'Raz'">
-            show it if the user name is Raz
-        </p>
-        <p v-show="userName != 'Raz'">
-            show it when user name is not Raz
-        </p>
+            <p v-if="changeUser">
+                userName is Raz
+            </p>
 
-
-        <p>
-        <ul>
-            <li v-for="(car, index) in cars">
-                @{{ index + 1 }} : @{{ car }}
-            </li>
-        </ul>
-        </p>
+            <p v-show="userName == 'Raz'">
+                show it if the user name is Raz
+            </p>
+            <p v-show="userName != 'Raz'">
+                show it when user name is not Raz
+            </p>
 
 
-        <p>
-        <ul>
-            <li v-for="(user, key, index) in users">
-                @{{ index + 1 }} : @{{ key }} : @{{ user }}
-            </li>
-        </ul>
-        </p>
-
-        <p>
-        <ul>
-            <li v-for="n in 10">
-                @{{ n }}
-            </li>
-        </ul>
-        </p>
-
-        <h4 v-once>
-            Old Name : @{{ name }}
-        </h4>
-        <h4>
-            Updated Name : @{{ name }}
-            @{{ updateName() }}
-        </h4>
+            <p>
+            <ul>
+                <li v-for="(car, index) in cars">
+                    @{{ index + 1 }} : @{{ car }}
+                </li>
+            </ul>
+            </p>
 
 
-        <h4>
-            Name : @{{ name }}
-        </h4>
+            <p>
+            <ul>
+                <li v-for="(user, key, index) in users">
+                    @{{ index + 1 }} : @{{ key }} : @{{ user }}
+                </li>
+            </ul>
+            </p>
 
-        <button v-on:click="updateUser">Update Name </button>
+            <p>
+            <ul>
+                <li v-for="n in 10">
+                    @{{ n }}
+                </li>
+            </ul>
+            </p>
 
-        <div class="box" style="width: 400; height: 200; background-color: aqua" v-on:mousemove="getCord">
-            hover me
+            <h4 v-once>
+                Old Name : @{{ name }}
+            </h4>
+            <h4>
+                Updated Name : @{{ name }}
+                @{{ updateName() }}
+            </h4>
+
+
+            <h4>
+                Name : @{{ name }}
+            </h4>
+
+            <button v-on:click="updateUser">Update Name </button>
+
+            <div class="box" style="width: 400; height: 200; background-color: aqua" v-on:mousemove="getCord">
+                hover me
+            </div>
+
+            <p>
+                X : @{{ x }}
+                Y : @{{ y }}
+            </p>
+
+
+            <p>
+                @{{ name }}
+            </p>
+
+            <button v-on:click.right="updateWithGivenName('testName')">
+                click
+            </button>
+
+            <hr>
+
+            {{-- make an invoice --}}
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Mobile Phone
+                        </td>
+                        <td>
+                            <input type="text" name="unitPrice">
+                        </td>
+                        <td>
+                            <input type="text" name="quantity">
+                        </td>
+                        <td>
+                            <input type="text" name="totalPrice" readonly>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="float-right">
+                            Grand Total
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+
+            <form action="" method="get" v-on:submit="handleForm($event)">
+                <input type="text" name="firstName" placeholder="First Name" v-model="formData.firstName">
+                <input type="text" name="lastName" placeholder="Last Name" v-model="formData.lastName">
+                <button type="submit">Save</button>
+            </form>
+
+            
+
         </div>
 
-        <p>
-            X : @{{ x }}
-            Y : @{{ y }}
-        </p>
 
+        <hr>
 
-        <p>
-            @{{ name }}
-        </p>
-
-        <button v-on:click.right="updateWithGivenName('testName')">
-            click
+        
+        <button v-on:click="a++">
+            Button A 
         </button>
-
-        <hr>
-
-        {{-- make an invoice --}}
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Product Name</th>
-                    <th>Unit Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        Mobile Phone
-                    </td>
-                    <td>
-                        <input type="text" name="unitPrice">
-                    </td>
-                    <td>
-                        <input type="text" name="quantity">
-                    </td>
-                    <td>
-                        <input type="text" name="totalPrice" readonly>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3" class="float-right">
-                        Grand Total
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-
-        <hr>
-
-        <form action="" method="get" v-on:submit="handleForm($event)">
-            <input type="text" name="firstName">
-            <input type="text" name="lastName">
-            <button type="submit">Save</button>
-        </form>
+        <p>A= @{{ a }}</p>
+        <p>B= @{{ b }}</p>
+        <button v-on:click="b++">
+            Button B 
+        </button>
+        <p>Salary + A = {{ addToA }} </p>
+        <p>Salary + B = {{ addToB }} </p>
 
     </div>
 </body>
@@ -210,7 +231,9 @@
             formData: {
                 firstName: '',
                 lastName: ''
-            }
+            },
+            a: 0,
+            b: 0
         },
         methods: {
             testFunction: function() {
@@ -239,8 +262,8 @@
                 // console.log(event.eventType);
             },
             handleForm: function(event) {
+                console.log(this.formData);
                 event.preventDefault();
-                console.log('form submitted');
             }
         }
 
