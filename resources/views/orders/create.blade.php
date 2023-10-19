@@ -88,9 +88,9 @@
                         <tbody>
 
                         </tbody>
-                        <tfoot class="pull-right">
+                        <tfoot>
                             <tr>
-                                <th colspan="3">
+                                <th colspan="3" class="text-right">
                                     Sub Total
                                 </th>
                                 <th>
@@ -99,7 +99,7 @@
                                 </th>
                             </tr>
                             <tr>
-                                <th colspan="3">
+                                <th colspan="3" class="text-right">
                                     Additional Charge
                                 </th>
                                 <th>
@@ -109,7 +109,7 @@
                                 </th>
                             </tr>
                             <tr>
-                                <th colspan="3">
+                                <th colspan="3" class="text-right">
                                     Discount
                                 </th>
                                 <th>
@@ -119,7 +119,7 @@
                                 </th>
                             </tr>
                             <tr>
-                                <th colspan="3">
+                                <th colspan="3" class="text-right">
                                     Grand Total
                                 </th>
                                 <th>
