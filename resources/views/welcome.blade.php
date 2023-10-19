@@ -211,21 +211,138 @@
             </p>
         </div>
 
+        <div id="app3">
+        </div>
 
+        <div id="app4">
+        </div>
+
+        <hr>
+
+        <div id="app5">
+            <comp1>
+
+            </comp1>
+
+            <comp1>
+
+            </comp1>
+        </div>
+
+
+
+        <div id="app6">
+            @{{ name }}
+    
+            <button @click="updateName">
+                Click here to update name
+            </button>
+        </div>
+
+        
     </div>
 
-    <div id="app3">
+    <hr>
+
+
+    <div id="app7">
+        @{{ name }}
+        <button @click="killIt">
+            Click here to destroy
+        </button>
     </div>
-
-    <div id="app4">
-    </div>
-
-
 
 </body>
 
 
 <script>
+
+    new Vue({
+        el: '#app7',
+        data() {
+            return {
+                name: 'testName'
+            }
+        },
+        methods: {
+            killIt(){
+                this.$destroy();
+            }
+        },
+        beforeDestroy(){
+            console.log('before destroy');
+        },
+        destroyed(){
+            console.log('destroyed');
+        }
+    });
+
+
+
+
+    new Vue({
+        el: '#app6',
+        data() {
+            return {
+                name: 'testName'
+            }
+        },
+        methods: {
+            updateName() {
+                setTimeout(() => {
+                    this.name = 'name changed'
+                }, 2000);
+            }
+        },
+        beforeCreate() {
+            console.log('before create');
+        },
+        created() {
+            console.log('created');
+        },
+        beforeMount() {
+            console.log('before mount');
+        },
+        mounted() {
+            console.log('mounted');
+        },
+        beforeUpdate() {
+            console.log('before update');
+        },
+        updated() {
+            console.log('updated');
+        },
+        beforeDestroy() {
+            console.log('before destroy');
+        },
+        destroyed() {
+            console.log('destroyed');
+        },
+    });
+
+
+
+
+
+
+
+
+    Vue.component('comp1', {
+        data() {
+            return {
+                name: 'testName'
+            }
+        },
+        template: `<p>@{{ name }}</p>`
+    });
+
+    new Vue({
+        el: '#app5'
+    })
+
+
+
+
     const template = `
 <div>
     Test title

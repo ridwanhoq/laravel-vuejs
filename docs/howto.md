@@ -85,10 +85,44 @@ vue js
     - [ ] mounted property
       - [ ] to change the value after a certain time 
     - [ ] template property
-      - [ ] 
+      - [ ] <template></template>
+    - [ ] components
+      - [ ] Vue.component('comp1', { })
+    - [ ] life cycle of vue js
+      - [ ] beforeCreate
+        - [ ] before creating vue instance
+      - [ ] created
+        - [ ] after creating vue instance
+      - [ ] beforeMount 
+        - [ ] before ready DOM 
+      - [ ] mounted
+        - [ ] after rendering DOM
+      - [ ] beforeUpdate
+        - [ ] before updating form
+      - [ ] updated
+        - [ ] after update
+      - [ ] beforeDestroy
+        - [ ] before destroying 
+      - [ ] destroyed
+        - [ ] after destroy
+    - [ ] vue cli
+      - [ ] standard tool / command line interface 
+        - [ ] pre requisite
+          - [ ] node js
+            - [ ] package manager npm / yarn
+          - [ ] git bash
+      - [ ] install vue cli
+        - [ ] `npm install -g @vue/cli` or `yarn global add @vue/cli`
+          - [ ] ensure that vue cli is installed `vue --version`
+          - [ ] run `vue create project-name` or 
+            - [ ] an error may occur error @achrinza/node-ipc@9.2.7: The engine "node" is incompatible with this module. Expected version "8
+              - [ ] run `yarn config set ignore-engines true` to resolve 
+          - [ ] run `vue ui`
+            - [ ] now vue ui opened in browser then you can create vue project
+          - [ ] required tags for vue project
+            - [ ] template
+            - [ ] script
+              - [ ] must use `export default`
+            - [ ] style
     - [ ] custom
     - [ ] 
-
-
-
-
