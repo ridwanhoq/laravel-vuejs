@@ -125,4 +125,48 @@ vue js
               - [ ] must use `export default`
             - [ ] style
     - [ ] custom
-    - [ ] 
+
+
+
+
+
+
+-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+    
+    
+    
+    <template>
+        <div>
+            <table>
+                <tr v-for="(row, index) in rows" :key="index">
+                    <td>{{ row . name }}</td>
+                    <td>{{ getIndex(index) }}</td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+    <script>
+        export default {
+            data() {
+                return {
+                    rows: [{
+                            name: 'John'
+                        },
+                        {
+                            name: 'Jane'
+                        },
+                        {
+                            name: 'Bob'
+                        }
+                    ]
+                };
+            },
+            methods: {
+                getIndex(index) {
+                    return index;
+                }
+            }
+        };
+    </script>
