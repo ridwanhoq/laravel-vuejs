@@ -69,7 +69,8 @@
                             </tr>
                             <tr>
                                 <td colspan="4">
-                                    <button type="button" class="btn btn-primary" @click="appendInProductsTable($event)">Add</button>
+                                    <button type="button" class="btn btn-primary"
+                                        @click="appendInProductsTable($event)">Add</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -85,7 +86,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                         <tfoot class="pull-right">
                             <tr>
@@ -93,7 +94,8 @@
                                     Sub Total
                                 </th>
                                 <th>
-                                    <input type="number" name="sub_total" step="0.01" class="form-control" value="0" readonly>
+                                    <input type="number" name="sub_total" step="0.01" class="form-control"
+                                        value="0" v-model="subTotal" readonly>
                                 </th>
                             </tr>
                             <tr>
@@ -101,7 +103,9 @@
                                     Additional Charge
                                 </th>
                                 <th>
-                                    <input type="number" name="additinal_charge" step="0.01" class="form-control" value="0">
+                                    <input type="number" name="additinal_charge" step="0.01" class="form-control"
+                                        value="0" v-model="additionalCharge" @input="calculateGrandTotal"
+                                        @wheel="calculateGrandTotal">
                                 </th>
                             </tr>
                             <tr>
@@ -109,7 +113,9 @@
                                     Discount
                                 </th>
                                 <th>
-                                    <input type="number" name="discount" step="0.01" class="form-control" value="0">
+                                    <input type="number" name="discount" step="0.01" class="form-control"
+                                        value="0" v-model="discount" @input="calculateGrandTotal"
+                                        @wheel="calculateGrandTotal">
                                 </th>
                             </tr>
                             <tr>
@@ -117,7 +123,8 @@
                                     Grand Total
                                 </th>
                                 <th>
-                                    <input type="text" readonly class="form-control" value="0">
+                                    <input type="number" readonly class="form-control" value="0" step="0.01"
+                                        v-model="grandTotal">
                                 </th>
                             </tr>
                         </tfoot>
@@ -146,10 +153,14 @@
                     unitPriceById: 0,
                     productTotalPrice: 0,
                     quantity: 0,
-                    subTotal: 0
+                    subTotal: 0,
+                    grandTotal: 0,
+                    additionalCharge: 0,
+                    discount: 0
                 }
             },
             methods: {
+                // to show unit price from database
                 getProductInfoById(event) {
                     console.log(event);
                     const productId = parseInt(event.target.value)
@@ -171,6 +182,7 @@
                         }
                     );
                 },
+                // calculate total price depending on quantity
                 calculateProductTotal() {
                     const unitPrice = parseFloat(this.unitPriceById);
                     const quantity = parseFloat(this.quantity);
@@ -178,14 +190,35 @@
 
                     this.productTotalPrice = productTotal;
                 },
+                // append the selected product in invoice all products table
                 appendInProductsTable(event) {
-                    const productRow = $('#selectProductInfoTable').find('tbody tr').eq(0);
-                    
+                    const selectProductRow = $('#selectProductInfoTable tr:eq(1)').clone();
+                    const productId = selectProductRow.find('select');
+
+                    const selectedProduct = selectProductRow.find('select').val();
+                    productId.val(selectedProduct);
+
                     // append product row in all products table
-                    $('#allProductsTable').find('tbody').append(productRow);
+                    $('#allProductsTable').find('tbody').append(selectProductRow);
+
+
+                    // get sub total
+                    this.calculateSubTotal();
+
+                    // get grand total
+                    this.calculateGrandTotal();
+
+
+
                 },
+                // get sum of each row of product total
+                calculateSubTotal() {
+                    this.subTotal += this.productTotalPrice
+                },
+                // 
                 calculateGrandTotal() {
-                    
+                    this.grandTotal = parseFloat(this.subTotal) + parseFloat(this.additionalCharge) - parseFloat(
+                        this.discount)
                 }
             },
         });
