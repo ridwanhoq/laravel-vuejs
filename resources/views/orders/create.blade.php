@@ -45,7 +45,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <select class="form-control" @change="getProductInfoById($event)">
+                                    <select class="form-control productId" @change="getProductInfoById($event)">
                                         <option value="">Choose Product</option>
                                         <option v-for="(product, index) in products" :value="product.id"
                                             :selected="product.id === selectedProduct.id ?
@@ -193,9 +193,9 @@
                 // append the selected product in invoice all products table
                 appendInProductsTable(event) {
                     const selectProductRow = $('#selectProductInfoTable tr:eq(1)').clone();
-                    const productId = selectProductRow.find('select');
+                    const productId = selectProductRow.find('.productId');
 
-                    const selectedProduct = selectProductRow.find('select').val();
+                    const selectedProduct = selectProductRow.find('.productId').val();
                     productId.val(selectedProduct);
 
                     // append product row in all products table
