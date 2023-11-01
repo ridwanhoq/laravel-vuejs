@@ -233,13 +233,13 @@
 
         <div id="app6">
             @{{ name }}
-    
+
             <button @click="updateName">
                 Click here to update name
             </button>
         </div>
 
-        
+
     </div>
 
     <hr>
@@ -256,7 +256,6 @@
 
 
 <script>
-
     new Vue({
         el: '#app7',
         data() {
@@ -265,14 +264,14 @@
             }
         },
         methods: {
-            killIt(){
+            killIt() {
                 this.$destroy();
             }
         },
-        beforeDestroy(){
+        beforeDestroy() {
             console.log('before destroy');
         },
-        destroyed(){
+        destroyed() {
             console.log('destroyed');
         }
     });

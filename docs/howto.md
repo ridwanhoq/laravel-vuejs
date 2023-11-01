@@ -124,5 +124,13 @@ vue js
             - [ ] script
               - [ ] must use `export default`
             - [ ] style
+              - [ ] App.vue is parent component, header.vue child component
+              - [ ] can be used locally or globally
+                - [ ] locally
+                  - [ ] use scoped attribute in style tag to use it locally
+                - [ ] globally
+                  - [ ] style tag without scoped attribute is used globally
+              - [ ] 
+              - 
     - [ ] custom
     - [ ] 
